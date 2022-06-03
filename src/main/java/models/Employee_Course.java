@@ -1,7 +1,5 @@
 package models;
 
-import java.util.Collection;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
@@ -24,25 +21,22 @@ import lombok.ToString;
 @ToString
 @Table
 @Entity
-public class Employee {
+public class Employee_Course {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="IdEm")
+	@Column(name="IdEmCo")
 	@Setter(value=AccessLevel.NONE)
-	private int idEm;
+	private int idEmCo;
 	
-	@Column(name="Name")
-	private String name;
-	
-	@Column(name="Surname")
-	private String surname;
+	@Column(name="ValuePr")
+	private float valuePr;
 	
 	@ManyToOne
-	@JoinColumn(name="IdDe")
-	private Department Department;
+	@JoinColumn(name="IdEm")
+	private Employee employee;
 	
-	@OneToMany(mappedBy = "employee")
-	@ToString.Exclude
-	private Collection<Employee_Course> emCourse;
+	@ManyToOne
+	@JoinColumn(name="IdCourse")
+	private Course course;
 }

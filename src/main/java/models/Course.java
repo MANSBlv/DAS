@@ -1,7 +1,7 @@
 package models;
 
-
 import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -26,32 +27,28 @@ import lombok.ToString;
 @ToString
 @Table
 @Entity
-public class Department {
+public class Course {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="IdDe")
+	@Column(name="IdCourse")
 	@Setter(value=AccessLevel.NONE)
-	private int idDe;
+	private int idCourse;
 	
 	@Column(name="Title")
 	private String title;
 	
-	//TODO vadītāja mainīgie
 	@ManyToOne
-	@JoinColumn(name="IdCo")
-	private Company company;
+	@JoinColumn(name="IdTy")
+	private Type type;
 	
-	@OneToMany(mappedBy="department")
+	@ManyToMany
+	@JoinTable(joinColumns = @JoinColumn(name="IdCourse"), inverseJoinColumns = @JoinColumn(name="IdDe"))
 	@ToString.Exclude
-	private java.util.Collection<Employee> employees;
+	private java.util.Collection<Department> departments = new ArrayList<Department>();
+	//caur konstruktoru pievienot atbilstošos departments objektus
 	
-	@ManyToMany(mappedBy="departments")
+	@OneToMany(mappedBy="course")
 	@ToString.Exclude
-	private java.util.Collection<Course> courses = new ArrayList<Course>();
-	
-	public  void addNewCourse(Course course)
-	{
-		courses.add(course);
-	}
+	private Collection<Employee_Course> emCourse;
 }

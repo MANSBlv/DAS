@@ -1,14 +1,10 @@
 package models;
 
-import java.util.Collection;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,25 +20,21 @@ import lombok.ToString;
 @ToString
 @Table
 @Entity
-public class Employee {
+public class Type {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="IdEm")
+	@Column(name="IdTy")
 	@Setter(value=AccessLevel.NONE)
-	private int idEm;
+	private int idTy;
 	
-	@Column(name="Name")
-	private String name;
+	@Column(name="IsObligatory")
+	private boolean isObligatory;
 	
-	@Column(name="Surname")
-	private String surname;
+	@Column(name="Description")
+	private String description;
 	
-	@ManyToOne
-	@JoinColumn(name="IdDe")
-	private Department Department;
-	
-	@OneToMany(mappedBy = "employee")
+	@OneToMany(mappedBy="type")
 	@ToString.Exclude
-	private Collection<Employee_Course> emCourse;
+	private java.util.Collection<Course> courses;
 }
