@@ -1,4 +1,4 @@
-package models;
+package lv.venta.models;
 
 import java.util.Collection;
 
@@ -27,22 +27,26 @@ import lombok.ToString;
 public class Employee {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="IdEm")
-	@Setter(value=AccessLevel.NONE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "IdEm")
+	@Setter(value = AccessLevel.NONE)
 	private int idEm;
-	
-	@Column(name="Name")
+
+	@Column(name = "Name")
 	private String name;
-	
-	@Column(name="Surname")
+
+	@Column(name = "Surname")
 	private String surname;
-	
+
 	@ManyToOne
-	@JoinColumn(name="IdDe")
+	@JoinColumn(name = "IdDe")
 	private Department Department;
-	
+
 	@OneToMany(mappedBy = "employee")
 	@ToString.Exclude
-	private Collection<Employee_Course> emCourse;
+	private Collection<EmployeeCourse> emCourse;
+	
+	@ManyToOne
+	@JoinColumn(name = "IdOccupation")
+	private Occupation occupation;
 }

@@ -1,4 +1,4 @@
-package models;
+package lv.venta.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,22 +21,22 @@ import lombok.ToString;
 @ToString
 @Table
 @Entity
-public class Employee_Course {
+public class EmployeeCourse {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="IdEmCo")
-	@Setter(value=AccessLevel.NONE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "IdEmCo")
+	@Setter(value = AccessLevel.NONE)
 	private int idEmCo;
-	
-	@Column(name="ValuePr")
+
+	@Column(name = "ValuePr")
 	private float valuePr;
-	
+
 	@ManyToOne
-	@JoinColumn(name="IdEm")
+	@JoinColumn(name = "IdEm")
 	private Employee employee;
-	
+
 	@ManyToOne
-	@JoinColumn(name="IdCourse")
+	@JoinColumn(name = "IdCourse")
 	private Course course;
 }
