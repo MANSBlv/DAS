@@ -1,8 +1,8 @@
-package lv.venta.repos;
+package lv.venta.demo.repos;
 
 import org.springframework.data.repository.CrudRepository;
 
-import lv.venta.models.Department;
+import lv.venta.demo.models.Department;
 
 public interface iDepartmentRepo extends CrudRepository<Department, Integer> {
 

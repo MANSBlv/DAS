@@ -1,8 +1,9 @@
-package lv.venta.models;
+package lv.venta.demo.models;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,7 +47,7 @@ public class Occupation {
 	@Column(name = "Description")
 	private String description;
 
-	@OneToMany(mappedBy = "occupation")
+	@OneToMany(mappedBy = "occupation", cascade = CascadeType.ALL)
 	@ToString.Exclude
 	private Collection<Employee> employee;
 

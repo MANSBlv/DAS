@@ -1,4 +1,6 @@
-package lv.venta.models;
+package lv.venta.demo.models;
+
+
 
 import java.util.Collection;
 
@@ -24,32 +26,27 @@ import lombok.ToString;
 @ToString
 @Table
 @Entity
-public class Company {
+public class Implementer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "IdCo")
+	@Column(name = "IdImpl")
 	@Setter(value = AccessLevel.NONE)
-	private int idCo;
-
-	// TODO validācijas
+	private int idImpl;
+	
+	@Pattern(regexp = "[A-ZŽĶĻŅČĢŠĪĀĒŪ]{1}[a-zžšķļņģčīāūē\\s]+", message = "Invalid input for Implementer Title")
+	@Size(min = 2, max = 30, message = "Invalid input length for Implementer Title")
 	@Column(name = "Title")
-	@Pattern(regexp = "[A-ZŽĶĻŅČĢŠĪĀĒŪ]{1}[a-zžšķļņģčīāūē\\s]+", message = "Invalid input for Company Title")
-	@Size(min = 2, max = 30, message = "Invalid input length for Company title")
 	private String title;
-
-	@OneToMany(mappedBy = "company")
+	
+	@OneToMany(mappedBy = "implementer")
 	@ToString.Exclude
-	private Collection<Department> departments;
+	private Collection<CourseImplementer> coImplem;
 
-	public Company( String title) {
-		
+	public Implementer( String title) {
+	
 		this.title = title;
-		
 	}
 	
 	
-	
-	
-
 }

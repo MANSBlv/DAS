@@ -1,4 +1,4 @@
-package lv.venta.models;
+package lv.venta.demo.models;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,6 +16,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -48,6 +51,7 @@ public class Course {
 	private String description;
 
 	@ManyToOne
+	@Cascade(CascadeType.ALL)
 	@JoinColumn(name = "IdTy")
 	private CourseType type;
 
@@ -64,16 +68,20 @@ public class Course {
 	@ToString.Exclude
 	private Collection<EmployeeCourse> emCourse;
 	
-	@ManyToOne
-	@JoinColumn(name = "IdCalendar")
-	private Calendar calendar;
+	@OneToMany(mappedBy = "course")
+	@ToString.Exclude
+	private Collection<Calendar> calendar;
 	
-	public Course( String title,String description, CourseType type) {
+	public Course( String title,String description, CourseType type ,  Collection<Department> department) {
 		
 		this.title = title;
 		this.description = description;
 		this.type=type;
+		this.departments=department; //.forEach(t -> department.getIdDe());
+		//this.departments=department.getClass().getField("idDe");
 	}
+
+	
 	
 	
 	

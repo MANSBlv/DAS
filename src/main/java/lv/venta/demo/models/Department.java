@@ -1,8 +1,9 @@
-package lv.venta.models;
+package lv.venta.demo.models;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Cascade;
+
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -53,11 +57,11 @@ public class Department {
 	@Column(name = "HeadDepSurname")
 	private String headDepSurname;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "IdCo")
 	private Company company;
 
-	@OneToMany(mappedBy = "department")
+	@OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
 	@ToString.Exclude
 	private Collection<Employee> employees;
 
@@ -70,11 +74,12 @@ public class Department {
 		courses.add(course);
 	}
 
-	public Department(String title,String headDepName,String headDepSurname) {
+	public Department(String title,String headDepName,String headDepSurname, Company company) {
 		
 		this.title = title;
 		this.headDepName = headDepName;
 		this.headDepSurname = headDepSurname;
+		this.company=company;
 	}
 	
 	

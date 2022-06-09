@@ -1,8 +1,8 @@
-package lv.venta.repos;
+package lv.venta.demo.repos;
 
 import org.springframework.data.repository.CrudRepository;
 
-import lv.venta.models.Course;
+import lv.venta.demo.models.Course;
 
 public interface iCourseRepo extends CrudRepository<Course, Integer> {
 

@@ -1,8 +1,8 @@
-package lv.venta.repos;
+package lv.venta.demo.repos;
 
 import org.springframework.data.repository.CrudRepository;
 
-import lv.venta.models.Implementer;
+import lv.venta.demo.models.Implementer;
 
 public interface iImplementerRepo extends CrudRepository<Implementer, Integer> {
 

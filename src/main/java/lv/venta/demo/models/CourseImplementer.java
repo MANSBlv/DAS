@@ -1,4 +1,4 @@
-package lv.venta.models;
+package lv.venta.demo.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -37,10 +40,12 @@ public class CourseImplementer {
 	private String notes;
 	
 	@ManyToOne
+	@Cascade(CascadeType.ALL)
 	@JoinColumn(name = "IdImpl")
 	private Implementer implementer;
 	
 	@ManyToOne
+	@Cascade(CascadeType.ALL)
 	@JoinColumn(name = "IdCalendar")
 	private Calendar calendar;
 

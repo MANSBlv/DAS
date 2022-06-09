@@ -1,15 +1,18 @@
-package lv.venta.models;
+package lv.venta.demo.models;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -44,9 +47,10 @@ public class Calendar {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date endDate;
 	
-	@OneToMany(mappedBy = "calendar")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name= "IdCourse")
 	@ToString.Exclude
-	private Collection<Course> course;
+	private Course course;
 
 	@ManyToMany(mappedBy = "occupationCallendar")
 	@ToString.Exclude
@@ -56,11 +60,12 @@ public class Calendar {
 	@ToString.Exclude
 	private Collection<CourseImplementer> coImpl;
 	
-	public Calendar(Date year, Date startingDate, Date endDate) {
+	public Calendar(Date year, Date startingDate, Date endDate, Course course) {
 		
 		this.year = year;
 		this.startingDate = startingDate;
 		this.endDate = endDate;
+		this.course=course;
 	}
 	
 	

@@ -1,4 +1,4 @@
-package lv.venta.models;
+package lv.venta.demo.models;
 
 import java.util.Collection;
 
@@ -13,6 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -45,6 +48,7 @@ public class Employee {
 	private String surname;
 
 	@ManyToOne
+	@Cascade(CascadeType.ALL)
 	@JoinColumn(name = "IdDe")
 	private Department department;
 
@@ -53,6 +57,7 @@ public class Employee {
 	private Collection<EmployeeCourse> emCourse;
 	
 	@ManyToOne
+	@Cascade(CascadeType.ALL)
 	@JoinColumn(name = "IdOccupation")
 	private Occupation occupation;
 	
@@ -60,12 +65,12 @@ public class Employee {
 	@Column(name = "PhoneNumber")
 	private String number;
 	
-	@Pattern(regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\\\.[A-Za-z0-9-]+)*(\\\\.[A-Za-z]{2,})$", message = "Invalid input for E-mail")
+	@Pattern(regexp = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", message = "Invalid input for E-mail")
 	@Column(name = "Email")
 	private String email;
 
 	public Employee(String name, String surname, Department department, Occupation occupation, String number, String email) {
-		super();
+		
 		this.name = name;
 		this.surname = surname;
 		this.department = department;

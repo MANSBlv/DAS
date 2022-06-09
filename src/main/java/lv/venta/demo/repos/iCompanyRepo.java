@@ -1,8 +1,8 @@
-package lv.venta.repos;
+package lv.venta.demo.repos;
 
 import org.springframework.data.repository.CrudRepository;
 
-import lv.venta.models.Company;
+import lv.venta.demo.models.Company;
 
 public interface iCompanyRepo extends CrudRepository<Company, Integer>{
 

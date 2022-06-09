@@ -1,6 +1,4 @@
-package lv.venta.models;
-
-
+package lv.venta.demo.models;
 
 import java.util.Collection;
 
@@ -26,26 +24,30 @@ import lombok.ToString;
 @ToString
 @Table
 @Entity
-public class Implementer {
+public class CourseType {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "IdImpl")
+	@Column(name = "IdTy")
 	@Setter(value = AccessLevel.NONE)
-	private int idImpl;
-	
-	@Pattern(regexp = "[A-ZŽĶĻŅČĢŠĪĀĒŪ]{1}[a-zžšķļņģčīāūē\\s]+", message = "Invalid input for Implementer Title")
-	@Size(min = 2, max = 30, message = "Invalid input length for Implementer Title")
-	@Column(name = "Title")
-	private String title;
-	
-	@OneToMany(mappedBy = "implementer")
-	@ToString.Exclude
-	private Collection<CourseImplementer> coImplem;
+	private int idTy;
 
-	public Implementer( String title) {
-	
-		this.title = title;
+	@Column(name = "IsObligatory")
+	private boolean isObligatory;
+
+	@Pattern(regexp = "[A-ZŽĶĻŅČĢŠĪĀĒŪ]{1}[a-zžšķļņģčīāūē\\s]+", message = "Invalid input for Course Type Description")
+	@Size(min = 2, max = 20 , message = "Invalid input length for Course Type description")
+	@Column(name = "Description")
+	private String description;
+
+	@OneToMany(mappedBy = "type")
+	@ToString.Exclude
+	private Collection<Course> courses;
+
+	public CourseType(boolean isObligatory,String description) {
+		
+		this.isObligatory = isObligatory;
+		this.description = description;
 	}
 	
 	

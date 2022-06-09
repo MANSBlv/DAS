@@ -1,4 +1,4 @@
-package lv.venta.models;
+package lv.venta.demo.models;
 
 import java.util.Date;
 
@@ -17,6 +17,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -44,10 +47,12 @@ public class EmployeeCourse {
 	private float valuePr;
 
 	@ManyToOne
+	@Cascade(CascadeType.ALL)
 	@JoinColumn(name = "IdEm")
 	private Employee employee;
 
 	@ManyToOne
+	@Cascade(CascadeType.ALL)
 	@JoinColumn(name = "IdCourse")
 	private Course course;
 	
@@ -57,7 +62,7 @@ public class EmployeeCourse {
 	private Date date;
 
 	public EmployeeCourse( float valuePr, Employee employee, Course course, Date date) {
-		super();
+		
 		this.valuePr = valuePr;
 		this.employee = employee;
 		this.course = course;

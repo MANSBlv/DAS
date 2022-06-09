@@ -1,4 +1,4 @@
-package lv.venta.models;
+package lv.venta.demo.models;
 
 import java.util.Collection;
 
@@ -24,31 +24,32 @@ import lombok.ToString;
 @ToString
 @Table
 @Entity
-public class CourseType {
+public class Company {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "IdTy")
+	@Column(name = "IdCo")
 	@Setter(value = AccessLevel.NONE)
-	private int idTy;
+	private int idCo;
 
-	@Column(name = "IsObligatory")
-	private boolean isObligatory;
+	// TODO validācijas
+	@Column(name = "Title")
+	@Pattern(regexp = "[A-ZŽĶĻŅČĢŠĪĀĒŪ]{1}[a-zžšķļņģčīāūē\\s]+", message = "Invalid input for Company Title")
+	@Size(min = 2, max = 30, message = "Invalid input length for Company title")
+	private String title;
 
-	@Pattern(regexp = "[A-ZŽĶĻŅČĢŠĪĀĒŪ]{1}[a-zžšķļņģčīāūē\\s]+", message = "Invalid input for Course Type Description")
-	@Size(min = 2, max = 20 , message = "Invalid input length for Course Type description")
-	@Column(name = "Description")
-	private String description;
-
-	@OneToMany(mappedBy = "type")
+	@OneToMany(mappedBy = "company")
 	@ToString.Exclude
-	private Collection<Course> courses;
+	private Collection<Department> departments;
 
-	public CourseType(boolean isObligatory,String description) {
+	public Company( String title) {
 		
-		this.isObligatory = isObligatory;
-		this.description = description;
+		this.title = title;
+		
 	}
 	
 	
+	
+	
+
 }
