@@ -52,6 +52,10 @@ public class Calendar {
 	@ToString.Exclude
 	private Collection<Occupation> occupation= new ArrayList<Occupation>();
 	
+	@OneToMany(mappedBy = "calendar")
+	@ToString.Exclude
+	private Collection<CourseImplementer> coImpl;
+	
 	public Calendar(Date year, Date startingDate, Date endDate) {
 		
 		this.year = year;

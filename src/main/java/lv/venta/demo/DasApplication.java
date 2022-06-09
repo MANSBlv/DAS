@@ -7,9 +7,13 @@ import org.springframework.context.annotation.Bean;
 
 import lv.venta.repos.iCalendarRepo;
 import lv.venta.repos.iCompanyRepo;
+import lv.venta.repos.iCourseImplementerRepo;
 import lv.venta.repos.iCourseRepo;
 import lv.venta.repos.iCourseTypeRepo;
 import lv.venta.repos.iDepartmentRepo;
+import lv.venta.repos.iEmployeeCourseRepo;
+import lv.venta.repos.iEmployeeRepo;
+import lv.venta.repos.iImplementerRepo;
 import lv.venta.repos.iOccupationRepo;
 
 @SpringBootApplication
@@ -19,7 +23,7 @@ public class DasApplication {
 		SpringApplication.run(DasApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner runner(iCalendarRepo calendarRepo, iCompanyRepo companyRepo,iCourseRepo courseRepo, iCourseTypeRepo courseTypeRepo, iDepartmentRepo departmentRepo, iOccupationRepo occupationRepo) {
+	public CommandLineRunner runner(iCalendarRepo calendarRepo, iCompanyRepo companyRepo,iCourseRepo courseRepo, iCourseTypeRepo courseTypeRepo, iDepartmentRepo departmentRepo, iOccupationRepo occupationRepo, iEmployeeRepo employeeRepo, iEmployeeCourseRepo emplCourseRepo, iImplementerRepo implementerRepo, iCourseImplementerRepo coImplRepo) {
 		return new CommandLineRunner() {
 			
 			@Override
