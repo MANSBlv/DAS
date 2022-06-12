@@ -6,5 +6,7 @@ import lv.venta.demo.models.Company;
 
 public interface iCompanyRepo extends CrudRepository<Company, Integer>{
 
+	boolean existsByTitle(String title);
+
 	
 }

@@ -6,4 +6,6 @@ import lv.venta.demo.models.Department;
 
 public interface iDepartmentRepo extends CrudRepository<Department, Integer> {
 
+	boolean existsByHeadDepNameAndHeadDepSurnameAndTitle(String headDepName, String headDepSurname, String title);
+
 }
