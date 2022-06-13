@@ -12,7 +12,7 @@ public interface iCourseRepo extends CrudRepository<Course, Integer> {
 
 	
 
-	boolean existsByTitleAndDepartmentAndCalendar(String title, Collection<Department> departments,
-			Collection<Calendar> calendar);
+	//boolean existsByTitleAndDepartmentsAndCalendarIn(String title, Collection<Department> departments,
+	//		Collection<Calendar> calendar);
 
 }

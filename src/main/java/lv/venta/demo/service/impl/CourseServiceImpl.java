@@ -31,9 +31,9 @@ public class CourseServiceImpl implements iCourseService {
 	@Autowired
 	private iCalendarRepo calRepo;
 
-	@Override
+	/*@Override
 	public boolean insertNewCourse(Course course) {
-		if(courseRepo.existsByTitleAndDepartmentAndCalendar(course.getTitle(),course.getDepartments(),course.getCalendar())) {
+		if(courseRepo.existsByTitleAndDepartmentsAndCalendarIn(course.getTitle(),course.getDepartments(),course.getCalendar())) {
 			return false;
 		}else {
 			courseRepo.save(course);
@@ -41,7 +41,7 @@ public class CourseServiceImpl implements iCourseService {
 		}
 		
 		
-	}
+	}*/
 
 	@Override
 	public boolean insertNewImplementerCourse(CourseImplementer cImplem) {
@@ -58,6 +58,12 @@ public class CourseServiceImpl implements iCourseService {
 	public boolean insertNewReminder(Department dep) {
 		depRepo.save(dep);
 		return true;
+	}
+
+	@Override
+	public boolean insertNewCourse(Course course) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	
