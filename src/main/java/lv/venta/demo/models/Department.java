@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -44,21 +45,25 @@ public class Department {
 	@Pattern(regexp = "[A-ZŽĶĻŅČĢŠĪĀĒŪ]{1}[a-zžšķļņģčīāūē\\s]+", message = "Invalid input for Department Title")
 	@Size(min = 2, max = 30 , message = "Invalid input length for Department Title")
 	@Column(name = "Title")
+	@NotNull
 	private String title;
 
 	// TODO vadītāja mainīgie
 	@Pattern(regexp = "[A-ZŽĶĻŅČĢŠĪĀĒŪ]{1}[a-zžšķļņģčīāūē\\s]+", message = "Invalid input for Head of Department Name")
 	@Size(min = 2, max = 20 , message = "Invalid input length for Head of Department Name")
 	@Column(name = "HeadDepName")
+	@NotNull
 	private String headDepName;
 	
 	@Pattern(regexp = "[A-ZŽĶĻŅČĢŠĪĀĒŪ]{1}[a-zžšķļņģčīāūē\\s]+", message = "Invalid input for Head of Department Surname")
 	@Size(min = 2, max = 20  ,message = "Invalid input length for Head of Department Surname")
 	@Column(name = "HeadDepSurname")
+	@NotNull
 	private String headDepSurname;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "IdCo")
+	//@NotNull
 	private Company company;
 
 	@OneToMany(mappedBy = "department", cascade = CascadeType.ALL)

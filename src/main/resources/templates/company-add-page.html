@@ -14,7 +14,6 @@
 				    	<input type="text" 
 					    class="form-control" 
 					    id="title"
-					    aria-describedby="titleHelp"
 					    th:field="*{title}"
 					    placeholder="Ievadiet firmas nosaukumu">
 					    <p class="alert alert-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>

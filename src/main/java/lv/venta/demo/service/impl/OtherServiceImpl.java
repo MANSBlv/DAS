@@ -1,5 +1,7 @@
 package lv.venta.demo.service.impl;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,17 +28,22 @@ public class OtherServiceImpl implements iOtherService {
 	
 	
 	@Override
-	public boolean insertNewDepartment(Department department) {
+	public boolean insertNewDepartment(Department department/*, int id*/) {
 		if(depRepo.existsByHeadDepNameAndHeadDepSurnameAndTitle(department.getHeadDepName(),department.getHeadDepSurname(),department.getTitle())) {
 			return false;
 		}else {
+
+			//department.setCompany(compRepo.findById(id).get());
 			depRepo.save(department);
 			return true;
 		}
 		
 	}
 
-
+	@Override
+	public Company selectById(int id) {
+		return compRepo.findById(id).get();
+	}
 
 	@Override
 	public boolean insertNewCompany(Company company) {
@@ -49,6 +56,10 @@ public class OtherServiceImpl implements iOtherService {
 		
 	}
 
+	@Override
+	public ArrayList<Company> selectAllComp(){
+		return (ArrayList<Company>) compRepo.findAll();
+	}
 
 
 	@Override

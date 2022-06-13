@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -40,11 +41,13 @@ public class Occupation {
 	@Pattern(regexp = "[A-ZŽĶĻŅČĢŠĪĀĒŪ]{1}[a-zžšķļņģčīāūē\\s]+", message = "Invalid input for Occupation Title")
 	@Size(min = 2, max = 30 ,message = "Invalid input length for Occupation Title")
 	@Column(name = "Title")
+	@NotNull
 	private String title;
 	
 	@Pattern(regexp = "[A-ZŽĶĻŅČĢŠĪĀĒŪ]{1}[a-zžšķļņģčīāūē\\s]+", message = "Invalid input for Occupation Description")
 	@Size(min = 2, max = 30,message = "Invalid input length for Occupation Description")
 	@Column(name = "Description")
+	@NotNull
 	private String description;
 
 	@OneToMany(mappedBy = "occupation", cascade = CascadeType.ALL)

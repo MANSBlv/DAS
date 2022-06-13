@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -33,11 +34,13 @@ public class CourseType {
 	private int idTy;
 
 	@Column(name = "IsObligatory")
+	@NotNull
 	private boolean isObligatory;
 
 	@Pattern(regexp = "[A-ZŽĶĻŅČĢŠĪĀĒŪ]{1}[a-zžšķļņģčīāūē\\s]+", message = "Invalid input for Course Type Description")
 	@Size(min = 2, max = 20 , message = "Invalid input length for Course Type description")
 	@Column(name = "Description")
+	@NotNull
 	private String description;
 
 	@OneToMany(mappedBy = "type")

@@ -44,11 +44,13 @@ public class EmployeeCourse {
 	@Min(value = 0)
 	@Max(value = 100)
 	@Column(name = "ValuePr")
+	@NotNull
 	private float valuePr;
 
 	@ManyToOne
 	@Cascade(CascadeType.ALL)
 	@JoinColumn(name = "IdEm")
+	@NotNull
 	private Employee employee;
 
 	@ManyToOne

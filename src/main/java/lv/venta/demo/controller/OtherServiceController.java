@@ -1,13 +1,17 @@
 package lv.venta.demo.controller;
 
+import java.util.List;
+
 import javax.naming.Binding;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import lv.venta.demo.models.Company;
@@ -65,15 +69,19 @@ public class OtherServiceController {
 	
 	@GetMapping("/department/addNew")
 	public String getAddedDepartment(Model models, Department dep) {
+		List<Company> listCompanies= oService.selectAllComp();
+		models.addAttribute("listCompanies", listCompanies);
 		Department depart= new Department();
+		//depart.setCompany(oService.selectById(id));
 		models.addAttribute("department", depart);
 		return "department-add-page";
 	}
 	
 	@PostMapping("/department/addNew")
-	public String addDepartment(@Valid Department dep, BindingResult res) {
+	public String addDepartment(@Valid Department dep, BindingResult res/*, int id*/) {
 		if(!res.hasErrors()) {
 			oService.insertNewDepartment(dep);
+			//dep.setCompany(oService.selectById(id));
 			return "department-add-page"; //pagaidu variants
 		}else {
 			return "department-add-page";

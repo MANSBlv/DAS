@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -40,16 +41,19 @@ public class Employee {
 	@Pattern(regexp = "[A-ZŽĶĻŅČĢŠĪĀĒŪ]{1}[a-zžšķļņģčīāūē\\s]+", message = "Invalid input for Occupation Title")
 	@Size(min = 2, max = 30 ,message = "Invalid input length for name")
 	@Column(name = "Name")
+	@NotNull
 	private String name;
 
 	@Pattern(regexp = "[A-ZŽĶĻŅČĢŠĪĀĒŪ]{1}[a-zžšķļņģčīāūē\\s]+", message = "Invalid input for Occupation Title")
 	@Size(min = 2, max = 30 ,message = "Invalid input length for surname")
 	@Column(name = "Surname")
+	@NotNull
 	private String surname;
 
 	@ManyToOne
 	@Cascade(CascadeType.ALL)
 	@JoinColumn(name = "IdDe")
+	@NotNull
 	private Department department;
 
 	@OneToMany(mappedBy = "employee")
@@ -59,6 +63,7 @@ public class Employee {
 	@ManyToOne
 	@Cascade(CascadeType.ALL)
 	@JoinColumn(name = "IdOccupation")
+	@NotNull
 	private Occupation occupation;
 	
 	@Size(min = 8, max = 12 ,message = "Invalid input length for phone number")
