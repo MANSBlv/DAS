@@ -6,4 +6,6 @@ import lv.venta.demo.models.Occupation;
 
 public interface iOccupationRepo extends CrudRepository<Occupation, Integer> {
 
+	boolean existsByTitleAndDescription(String title, String description);
+	
 }
