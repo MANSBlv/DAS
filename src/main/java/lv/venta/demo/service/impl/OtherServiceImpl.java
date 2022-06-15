@@ -6,16 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lv.venta.demo.models.Company;
-import lv.venta.demo.models.Course;
-import lv.venta.demo.models.CourseImplementer;
 import lv.venta.demo.models.Department;
-import lv.venta.demo.models.Employee;
 import lv.venta.demo.models.Implementer;
 import lv.venta.demo.repos.iCompanyRepo;
-import lv.venta.demo.repos.iCourseImplementerRepo;
-import lv.venta.demo.repos.iCourseRepo;
 import lv.venta.demo.repos.iDepartmentRepo;
-import lv.venta.demo.repos.iEmployeeRepo;
 import lv.venta.demo.repos.iImplementerRepo;
 import lv.venta.demo.service.iOtherService;
 
@@ -31,15 +25,6 @@ public class OtherServiceImpl implements iOtherService {
 	@Autowired
 	private iImplementerRepo implRepo;
 	
-	@Autowired
-	private iCourseImplementerRepo cImplRepo;
-	
-	@Autowired
-	private iEmployeeRepo emRepo;
-	
-	@Autowired
-	private iCourseRepo cRepo;
-	
 	
 	
 	@Override
@@ -53,26 +38,6 @@ public class OtherServiceImpl implements iOtherService {
 			return true;
 		}
 		
-	}
-	
-	
-	@Override
-	public boolean deleteDepartmentById(int id) {
-		if(depRepo.existsById(id)) {
-			ArrayList<Employee> empl = emRepo.findByDepartmentIdDe(id);
-			for(Employee temp: empl) {
-				temp.setDepartment(null);
-				emRepo.save(temp);
-			}
-			ArrayList<Course> cours= cRepo.findByDepartmentsIdDe(id);
-			for(Course temp : cours) {
-				temp.setDepartments(null);
-				cRepo.save(temp);
-			}
-			depRepo.deleteById(id);
-			return true;
-		}
-		return false;
 	}
 
 	@Override
@@ -90,32 +55,6 @@ public class OtherServiceImpl implements iOtherService {
 		}
 		
 	}
-	
-	@Override
-	public boolean updateCompanyById(int id, Company comp) {
-		if(compRepo.existsById(id)) {
-			Company company= compRepo.findById(id).get();
-			company.setTitle(comp.getTitle());
-			compRepo.save(company);
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public boolean deleteCompanyById(int id) {
-		if(compRepo.existsById(id)) {
-			ArrayList<Department> dep= depRepo.findByCompanyIdCo(id);
-			for(Department temp : dep) {
-				temp.setCompany(null);
-				depRepo.save(temp);
-			}
-			compRepo.deleteById(id);
-			return true;
-		}
-		return false;
-	}
-	
 
 	@Override
 	public ArrayList<Company> selectAllComp(){
@@ -133,24 +72,6 @@ public class OtherServiceImpl implements iOtherService {
 		}
 		
 	}
-
-
-
-	@Override
-	public boolean deleteImplementerById(int id) {
-		if(implRepo.existsById(id)) {
-			ArrayList<CourseImplementer> impl = cImplRepo.findByImplementerIdImpl(id);
-			for(CourseImplementer temp : impl) {
-				temp.setImplementer(null);
-				cImplRepo.save(temp);
-			}
-			implRepo.deleteById(id);
-		}
-		return false;
-	}
-
-
-
 	
 	
 	
