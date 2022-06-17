@@ -40,7 +40,7 @@ public class CourseServiceController {
 			cService.insertNewImplementerCourse(impl);
 			return "course-implementer-page"; //pagaidu variants
 		}else {
-			return "course-implementer-page";
+			return "error-page";
 		}
 		
 	}

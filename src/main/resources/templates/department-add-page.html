@@ -24,9 +24,9 @@
 							<label>Uzņēmums</label>
 
 							
-							<select class="form-control"  > 
+							<select class="form-control" th:field="*{company}" > 
 								<option  th:each="temp:${listCompanies}"
-								th:value="${temp.getTitle}" 
+								th:value="${temp.getIdCo}" 
 								
 								th:text="${temp.getTitle} ?: 'default value'" > </option>
 							</select>

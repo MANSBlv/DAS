@@ -11,9 +11,9 @@
 					<form th:action="@{/courseImplementer/addNew}" th:object="${courseImplementer}" method="post">
   						<div class= "form-group"> 
 							<label>Īstenotāja Nosaukums</label>
-							<select class="form-control"  > 
+							<select class="form-control" th:value="*{implementer}" > 
 								<option  th:each="temp:${allCourseImplementer}"
-								th:value="${temp.getTitle}" 
+								th:value="${temp.getIdImpl}" 
 								
 								th:text="${temp.getTitle} ?: 'default value'" > </option>
 							</select>
