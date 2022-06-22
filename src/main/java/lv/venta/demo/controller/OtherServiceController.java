@@ -40,9 +40,9 @@ public class OtherServiceController {
 	public String addCompany(@Valid Company comp, BindingResult res) {
 		if(!res.hasErrors()) {
 			oService.insertNewCompany(comp);
-			return "department-add-page"; //pagaidu variants
+			return "company-add-page"; //pagaidu variants
 		}else {
-			return "company-add-page";
+			return "error-page";
 		}
 		
 		
@@ -62,7 +62,7 @@ public class OtherServiceController {
 			oService.insertNewImplementer(impl);
 			return "implementer-add-page"; //pagaidu variants
 		}else {
-			return "implementer-add-page";
+			return "error-page";
 		}
 		
 	}
@@ -84,7 +84,7 @@ public class OtherServiceController {
 			//dep.setCompany(oService.selectById(id));
 			return "department-add-page"; //pagaidu variants
 		}else {
-			return "department-add-page";
+			return "error-add-page";
 		}
 		
 		

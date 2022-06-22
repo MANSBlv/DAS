@@ -15,8 +15,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -41,10 +44,14 @@ public class Calendar {
 	@DateTimeFormat(pattern = "yyyy")
 	private Date year;
 	
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	//@DateTimeFormat(iso = ISO.DATE)
+	//@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date startingDate;
 	
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	//@DateTimeFormat(iso = ISO.DATE)
+	//@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date endDate;
 	
 	@ManyToOne(cascade = CascadeType.ALL)

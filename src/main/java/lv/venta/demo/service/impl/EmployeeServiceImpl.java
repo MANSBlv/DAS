@@ -1,11 +1,16 @@
 package lv.venta.demo.service.impl;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lv.venta.demo.models.Department;
 import lv.venta.demo.models.Employee;
 import lv.venta.demo.models.EmployeeCourse;
+import lv.venta.demo.models.Implementer;
 import lv.venta.demo.models.Occupation;
+import lv.venta.demo.repos.iDepartmentRepo;
 import lv.venta.demo.repos.iEmployeeCourseRepo;
 import lv.venta.demo.repos.iEmployeeRepo;
 import lv.venta.demo.repos.iOccupationRepo;
@@ -22,6 +27,9 @@ public class EmployeeServiceImpl implements iEmployeeService {
 	
 	@Autowired
 	private iOccupationRepo occRepo;
+	
+	@Autowired
+	private iDepartmentRepo deprepo;
 	
 	@Override
 	public boolean insertNewEmployee(Employee employee) {
@@ -82,6 +90,16 @@ public class EmployeeServiceImpl implements iEmployeeService {
 			return true;
 		}
 		return false;
+	}
+	
+	@Override
+	public ArrayList<Department> selectAllDep(){
+		return (ArrayList<Department>) deprepo.findAll();
+	}
+	
+	@Override
+	public ArrayList<Occupation> selectAllOcc(){
+		return (ArrayList<Occupation>) occRepo.findAll();
 	}
 
 }
