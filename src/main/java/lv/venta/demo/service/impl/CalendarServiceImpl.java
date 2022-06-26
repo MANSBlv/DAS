@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lv.venta.demo.models.Calendar;
-import lv.venta.demo.models.Course;
 import lv.venta.demo.repos.iCalendarRepo;
 import lv.venta.demo.repos.iCourseRepo;
 import lv.venta.demo.service.iCalendarService;
@@ -61,6 +60,15 @@ public class CalendarServiceImpl implements iCalendarService {
 	@Override
 	public ArrayList<Calendar> selectAllCal() {
 		return (ArrayList<Calendar>) calRepo.findAll();
+	}
+
+	@Override
+	public Calendar selectCalendarById(int id) throws Exception {
+		if(calRepo.existsById(id)) {
+			Calendar calendar= calRepo.findById(id).get();
+			return calendar;
+		}
+		throw new Exception("Course doesn't exist in calendar");
 	}
 
 	
