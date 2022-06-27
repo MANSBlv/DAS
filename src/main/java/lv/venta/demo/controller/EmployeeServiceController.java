@@ -43,12 +43,12 @@ public class EmployeeServiceController {
 	
 	@PostMapping("/employee/addNew")
 	public String addNewEmployee(@Valid Employee emp, BindingResult res) {
-		//if(!res.hasErrors()) {
+		if(!res.hasErrors()) {
 			eService.insertNewEmployee(emp);
 			return "employe-add-page";
-		//}else {
-		//	return "error-page";
-		//}
+		}else {
+			return "error-page";
+		}
 		
 		
 	}
