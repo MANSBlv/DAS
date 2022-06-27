@@ -1,9 +1,11 @@
 package lv.venta.demo.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import lv.venta.demo.models.Course;
 import lv.venta.demo.models.CourseImplementer;
+import lv.venta.demo.models.CourseType;
 import lv.venta.demo.models.Department;
 import lv.venta.demo.models.Implementer;
 
@@ -22,7 +24,11 @@ public interface iCourseService {
 	
 	public abstract boolean updateImplementerCourseById(int id, CourseImplementer cImpl);
 	
-	public abstract boolean insertNewReminder(Department dep);
+	//public abstract boolean insertNewReminder(Department dep);
 
 	ArrayList<Implementer> selectAllImpl();
+
+	ArrayList<Department> selectAllDep();
+
+	ArrayList<CourseType> selectAllType();
 }

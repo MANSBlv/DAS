@@ -10,6 +10,7 @@ import lv.venta.demo.models.Calendar;
 import lv.venta.demo.models.Company;
 import lv.venta.demo.models.Course;
 import lv.venta.demo.models.CourseImplementer;
+import lv.venta.demo.models.CourseType;
 import lv.venta.demo.models.Department;
 import lv.venta.demo.models.EmployeeCourse;
 import lv.venta.demo.models.Implementer;
@@ -46,23 +47,23 @@ public class CourseServiceImpl implements iCourseService {
 	@Autowired
 	private iEmployeeCourseRepo empCourseRepo;
 
-	/*@Override
-	public boolean insertNewCourse(Course course) {
-		if(courseRepo.existsByTitleAndDepartmentsAndCalendarIn(course.getTitle(),course.getDepartments(),course.getCalendar())) {
-			return false;
-		}else {
-			courseRepo.save(course);
-			return true;
-		}
-		
-		
-
-	}*/
+//	@Override
+//	public boolean insertNewCourse(Course course) {
+//		if(courseRepo.existsByDepartmentsAndCalendarIn(course.getDepartments(),course.getCalendar())) {
+//			return false;
+//		}else {
+//			courseRepo.save(course);
+//			return true;
+//		}
+//		
+//		
+//
+//	}
 	
 	@Override
 	public boolean insertNewCourse(Course course) {
-		// TODO Auto-generated method stub
-		return false;
+		courseRepo.save(course);
+		return true;
 	}
 	
 	@Override
@@ -136,10 +137,20 @@ public class CourseServiceImpl implements iCourseService {
 		return (ArrayList<Implementer>) implRepo.findAll() ;
 	}
 	
+//	@Override
+//	public boolean insertNewReminder(Department dep) {
+//		depRepo.save(dep);
+//		return true;
+//	}
+
 	@Override
-	public boolean insertNewReminder(Department dep) {
-		depRepo.save(dep);
-		return true;
+	public ArrayList<Department> selectAllDep() {
+		return (ArrayList<Department>) depRepo.findAll() ;
+	}
+
+	@Override
+	public ArrayList<CourseType> selectAllType() {
+		return (ArrayList<CourseType>) typeRepo.findAll() ;
 	}
 
 

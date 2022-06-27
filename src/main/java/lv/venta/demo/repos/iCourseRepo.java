@@ -3,6 +3,8 @@ package lv.venta.demo.repos;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.repository.CrudRepository;
 
 import lv.venta.demo.models.Calendar;
@@ -13,9 +15,9 @@ public interface iCourseRepo extends CrudRepository<Course, Integer> {
 
 	ArrayList<Course> findByDepartmentsIdDe(int id);
 
-	
 
-	//boolean existsByTitleAndDepartmentsAndCalendarIn(String title, Collection<Department> departments,
-	//		Collection<Calendar> calendar);
+	//boolean existsByDepartmentsAndCalendarIn(Collection<Department> departments, Collection<Calendar> calendar);
+
+	
 
 }

@@ -74,6 +74,20 @@ public class OtherServiceImpl implements iOtherService {
 		}
 		return false;
 	}
+	
+	@Override
+	public boolean updateDepartmentById(int id, Department dep) {
+		if(depRepo.existsById(id)) {
+			Department depart = new Department();
+			depart.setCompany(dep.getCompany());
+			depart.setTitle(dep.getTitle());
+			depart.setHeadDepName(dep.getHeadDepName());
+			depart.setHeadDepSurname(dep.getHeadDepSurname());
+			depRepo.save(depart);
+			return true;
+		}
+		return false;
+	}
 
 	@Override
 	public Company selectById(int id) {
@@ -148,7 +162,17 @@ public class OtherServiceImpl implements iOtherService {
 		}
 		return false;
 	}
-
+	
+	@Override
+	public boolean updateImplementerById(int id, Implementer implementer) {
+		if(implRepo.existsById(id)) {
+			Implementer impl = new Implementer();
+			impl.setTitle(implementer.getTitle());
+			implRepo.save(impl);
+			return true;
+		}
+		return false;
+	}
 
 
 	

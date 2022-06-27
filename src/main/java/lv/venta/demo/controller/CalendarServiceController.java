@@ -1,5 +1,12 @@
 package lv.venta.demo.controller;
 
+<<<<<<< HEAD
+=======
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+>>>>>>> 8f5559c39caf0480f56cbad0042847bf46497373
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +19,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import lv.venta.demo.models.Calendar;
 import lv.venta.demo.service.iCalendarService;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8f5559c39caf0480f56cbad0042847bf46497373
 
 @Controller
 public class CalendarServiceController {
 
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 8f5559c39caf0480f56cbad0042847bf46497373
 	@Autowired
 	private iCalendarService calService;
 	
@@ -65,7 +83,11 @@ public class CalendarServiceController {
 			}
 		}
 	}
+<<<<<<< HEAD
 	
 	
 	
 	
+=======
+
+>>>>>>> 8f5559c39caf0480f56cbad0042847bf46497373

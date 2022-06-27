@@ -35,6 +35,7 @@ public class CourseType {
 
 	@Column(name = "IsObligatory")
 	@NotNull
+	
 	private boolean isObligatory;
 
 	@Pattern(regexp = "[A-ZŽĶĻŅČĢŠĪĀĒŪ]{1}[a-zžšķļņģčīāūē\\s]+", message = "Invalid input for Course Type Description")

@@ -11,7 +11,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import lv.venta.demo.models.Course;
 import lv.venta.demo.models.CourseImplementer;
+import lv.venta.demo.models.CourseType;
+import lv.venta.demo.models.Department;
 import lv.venta.demo.models.Implementer;
 import lv.venta.demo.service.iCourseService;
 import lv.venta.demo.service.iOtherService;
@@ -43,5 +46,26 @@ public class CourseServiceController {
 			return "error-page";
 		}
 		
+	}
+	
+	@PostMapping("/course/addNew")
+	public String addCourse(@Valid Course course, BindingResult res) {
+		//if(!res.hasErrors()) {
+			cService.insertNewCourse(course);
+			return "course-add-page";
+		//}else {
+		//	return "error-page";
+		//}
+	}
+	
+	@GetMapping("/course/addNew")
+	public String getAddedCourse(Model models, Course course) {
+		List<Department> department= cService.selectAllDep();
+		models.addAttribute("allDepartment", department);
+		List<CourseType> cType= cService.selectAllType();
+		models.addAttribute("allType", cType);
+		Course cour= new Course();
+		models.addAttribute("course", cour);
+		return "course-add-page";
 	}
 }
