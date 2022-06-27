@@ -12,6 +12,8 @@ public interface iOtherService {
 	
 	public abstract boolean deleteDepartmentById(int id);
 	
+	boolean updateDepartmentById(int id, Department dep);
+	
 	public abstract boolean insertNewCompany(Company company);
 	
 	public abstract boolean deleteCompanyById(int id);
@@ -21,9 +23,15 @@ public interface iOtherService {
 	public abstract boolean insertNewImplementer(Implementer implementer);
 	
 	public abstract boolean deleteImplementerById(int id);
+	
+	boolean updateImplementerById(int id, Implementer implementer);
 
 	ArrayList<Company> selectAllComp();
 
 	Company selectById(int id);
+
+	
+
+	
 	
 }
