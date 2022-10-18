@@ -95,6 +95,7 @@ public class CourseServiceImpl implements iCourseService {
 			c.setEmCourse(course.getEmCourse());
 			c.setTitle(course.getTitle());
 			c.setType(course.getType());
+			courseRepo.save(c);
 			return true;
 		}
 		return false;
@@ -118,6 +119,7 @@ public class CourseServiceImpl implements iCourseService {
 			cImplementer.setCalendar(cImpl.getCalendar());
 			cImplementer.setImplementer(cImpl.getImplementer());
 			cImplementer.setNotes(cImpl.getNotes());
+			cImplRepo.save(cImplementer);
 			return true;
 		}
 		return false;

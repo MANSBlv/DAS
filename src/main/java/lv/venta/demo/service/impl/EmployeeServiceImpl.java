@@ -87,6 +87,7 @@ public class EmployeeServiceImpl implements iEmployeeService {
 			emC.setDate(emCourse.getDate());
 			emC.setEmployee(emCourse.getEmployee());
 			emC.setValuePr(emCourse.getValuePr());
+			emCoRepo.save(emC);
 			return true;
 		}
 		return false;

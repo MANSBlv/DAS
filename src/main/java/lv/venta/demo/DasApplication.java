@@ -20,6 +20,8 @@ import lv.venta.demo.models.Department;
 import lv.venta.demo.models.Employee;
 import lv.venta.demo.models.EmployeeCourse;
 import lv.venta.demo.models.Implementer;
+import lv.venta.demo.models.MyUser;
+import lv.venta.demo.models.MyUserAuthority;
 import lv.venta.demo.models.Occupation;
 import lv.venta.demo.repos.iCalendarRepo;
 import lv.venta.demo.repos.iCompanyRepo;
@@ -30,7 +32,9 @@ import lv.venta.demo.repos.iDepartmentRepo;
 import lv.venta.demo.repos.iEmployeeCourseRepo;
 import lv.venta.demo.repos.iEmployeeRepo;
 import lv.venta.demo.repos.iImplementerRepo;
+import lv.venta.demo.repos.iMyUserAuthorityRepo;
 import lv.venta.demo.repos.iOccupationRepo;
+import lv.venta.demo.repos.iUserRepo;
 
 @SpringBootApplication
 public class DasApplication {
@@ -40,13 +44,25 @@ public class DasApplication {
 	}
 	@Bean
 	
-	public CommandLineRunner runner(iCalendarRepo calendarRepo, iCompanyRepo companyRepo,iCourseRepo courseRepo, iCourseTypeRepo courseTypeRepo, iDepartmentRepo departmentRepo, iOccupationRepo occupationRepo, iEmployeeRepo employeeRepo, iEmployeeCourseRepo emplCourseRepo, iImplementerRepo implementerRepo, iCourseImplementerRepo coImplRepo) {
+	public CommandLineRunner runner(iCalendarRepo calendarRepo, iCompanyRepo companyRepo,iCourseRepo courseRepo, 
+			iCourseTypeRepo courseTypeRepo, iDepartmentRepo departmentRepo, iOccupationRepo occupationRepo, 
+			iEmployeeRepo employeeRepo, iEmployeeCourseRepo emplCourseRepo, iImplementerRepo implementerRepo, 
+			iCourseImplementerRepo coImplRepo, iUserRepo userRepo, iMyUserAuthorityRepo authRepo) {
 		return new CommandLineRunner() {
 			
 			@Override
 			
 			public void run(String... args) throws Exception {
 				// TODO Auto-generated method stub
+//				MyUserAuthority auth= new MyUserAuthority("ADMIN");
+//				MyUser user = new MyUser("Test@inbox.lv", "123", new ArrayList<>(Arrays.asList(auth)));
+//				user.setPasswordHashed(user.getPassword());
+//				
+//				auth.addUser(user);
+//				user.addAuthority(auth);
+//				userRepo.save(user);
+//				authRepo.save(auth);
+				
 				Company c1= new Company("Tranzits");
 				//companyRepo.save(c1);
 				
